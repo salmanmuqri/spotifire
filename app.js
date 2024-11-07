@@ -15,20 +15,20 @@ const songs = [
   {
     title: "Song 1 Title",
     artist: "Artist Name 1",
-    src: "music/song1.mp3",
-    image: "images/song1.jpg",
+    src: "/music/song1.mp3", // Use root-relative paths
+    image: "/images/song1.jpg", // Use root-relative paths
   },
   {
     title: "Song 2 Title",
     artist: "Artist Name 2",
-    src: "music/song2.mp3",
-    image: "images/song2.jpg",
+    src: "/music/song2.mp3", // Use root-relative paths
+    image: "/images/song2.jpg", // Use root-relative paths
   },
   {
     title: "Song 3 Title",
     artist: "Artist Name 3",
-    src: "music/song3.mp3",
-    image: "images/song3.jpg",
+    src: "/music/song3.mp3", // Use root-relative paths
+    image: "/images/song3.jpg", // Use root-relative paths
   },
 ];
 
@@ -43,8 +43,11 @@ function loadSong(index) {
   audioPlayer.src = song.src;
   songTitle.textContent = song.title;
   songArtist.textContent = song.artist;
-  // Optional: Load song image if desired (uncomment if you want to show the image)
-  // document.getElementById("song-image").src = song.image;
+  
+  // Dynamically update song image
+  const songImage = document.getElementById("song-image");
+  songImage.src = song.image; // Assuming the song object has an image property
+  songImage.alt = song.title + " Cover Art"; // Update alt text
 }
 
 // Handle Play/Pause button click
