@@ -1,0 +1,16 @@
+{
+  "name": "spotifire",
+  "version": "1.0.0",
+  "description": "Spotify Clone with Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
