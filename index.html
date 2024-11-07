@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spotifire - Music for Everyone</title>
+  <title>Spotifire</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header: Logo and Navigation -->
   <header>
     <div class="logo">Spotifire</div>
     <nav>
@@ -15,22 +16,36 @@
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Stream Music Anytime, Anywhere</h1>
-      <p>Join Spotifire today and discover millions of songs.</p>
+  <!-- Hero Section: Main Promotion -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Listen to Music Anytime, Anywhere</h1>
+      <p>Explore millions of songs and podcasts.</p>
       <button onclick="window.location.href='signup.html'">Get Started</button>
-    </section>
-    <section class="featured">
-      <h2>Featured Playlists</h2>
-      <div class="playlist">
-        <div class="playlist-item">Playlist 1</div>
-        <div class="playlist-item">Playlist 2</div>
-        <div class="playlist-item">Playlist 3</div>
-      </div>
-    </section>
-  </main>
+    </div>
+    <img src="images/hero-image.jpg" alt="Spotify Hero" class="hero-img">
+  </section>
 
+  <!-- Featured Playlists Section -->
+  <section class="playlists">
+    <h2>Featured Playlists</h2>
+    <div class="playlist-grid">
+      <div class="playlist-item">
+        <img src="images/playlist-1.jpg" alt="Playlist 1">
+        <p>Rock Classics</p>
+      </div>
+      <div class="playlist-item">
+        <img src="images/playlist-2.jpg" alt="Playlist 2">
+        <p>Chill Vibes</p>
+      </div>
+      <div class="playlist-item">
+        <img src="images/playlist-3.jpg" alt="Playlist 3">
+        <p>Top Hits</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
   <footer>
     <p>&copy; 2024 Spotifire. All Rights Reserved.</p>
   </footer>

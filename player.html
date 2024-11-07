@@ -11,26 +11,30 @@
     <div class="logo">Spotifire</div>
   </header>
 
-  <main>
-    <section class="player">
-      <div class="song-info">
-        <p id="song-title">Song Title</p>
-        <p id="song-artist">Artist Name</p>
-      </div>
-      <div class="controls">
-        <button id="prev-btn">Prev</button>
-        <button id="play-pause-btn">Play</button>
-        <button id="next-btn">Next</button>
-      </div>
+  <section class="player">
+    <div class="song-info">
+      <p id="song-title">Song Title</p>
+      <p id="song-artist">Artist Name</p>
+    </div>
+    
+    <div class="controls">
+      <button id="prev-btn">Prev</button>
+      <button id="play-pause-btn">Play</button>
+      <button id="next-btn">Next</button>
+    </div>
+    
+    <div class="progress-container">
       <input type="range" id="progress-bar" value="0" max="100">
-      <audio id="audio-player" src="song.mp3"></audio>
-    </section>
-  </main>
-  
+      <span id="current-time">0:00</span>
+    </div>
+
+    <audio id="audio-player" src="music/song1.mp3"></audio>
+  </section>
+
   <footer>
     <p>&copy; 2024 Spotifire. All Rights Reserved.</p>
   </footer>
-  
+
   <script src="app.js"></script>
 </body>
 </html>
