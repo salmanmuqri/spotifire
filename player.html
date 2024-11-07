@@ -13,19 +13,22 @@
 
   <section class="player">
     <div class="song-info">
-      <p id="song-title">Song Title</p>
-      <p id="song-artist">Artist Name</p>
+      <img id="track-image" class="track-image" src="images/song1.jpg" alt="Song 1">
+      <div>
+        <p id="song-title">Song Title</p>
+        <p id="song-artist">Artist Name</p>
+      </div>
     </div>
     
     <div class="controls">
-      <button id="prev-btn">Prev</button>
-      <button id="play-pause-btn">Play</button>
-      <button id="next-btn">Next</button>
+      <button id="prev-btn"><i class="fas fa-step-backward"></i></button>
+      <button id="play-pause-btn"><i class="fas fa-play"></i></button>
+      <button id="next-btn"><i class="fas fa-step-forward"></i></button>
     </div>
     
     <div class="progress-container">
       <input type="range" id="progress-bar" value="0" max="100">
-      <span id="current-time">0:00</span>
+      <span id="current-time">0:00</span> / <span id="duration-time">0:00</span>
     </div>
 
     <audio id="audio-player" src="music/song1.mp3"></audio>
