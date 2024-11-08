@@ -1,93 +1,104 @@
-// Select the necessary DOM elements
+// Get references to the HTML elements
 const playPauseButton = document.getElementById("play-pause-btn");
 const prevButton = document.getElementById("prev-btn");
 const nextButton = document.getElementById("next-btn");
-const progressBar = document.getElementById("progress-bar");
 const audioPlayer = document.getElementById("audio-player");
-const currentTime = document.getElementById("current-time");
-
-// Track information display
+const progressBar = document.getElementById("progress-bar");
+const currentTimeDisplay = document.getElementById("current-time");
 const songTitle = document.getElementById("song-title");
 const songArtist = document.getElementById("song-artist");
+const playIcon = playPauseButton.querySelector('i');
 
-// List of songs with title, artist, source, and image
+// List of songs (updated to use relative paths for GitHub Pages)
 const songs = [
   {
     title: "Song 1 Title",
     artist: "Artist Name 1",
-    src: "/music/song1.mp3", // Use root-relative paths
-    image: "/images/song1.jpg", // Use root-relative paths
+    src: "./Music/song1.mp3", // Use relative path for music
+    image: "./Images/song1.jpg", // Use relative path for images
   },
   {
     title: "Song 2 Title",
     artist: "Artist Name 2",
-    src: "/music/song2.mp3", // Use root-relative paths
-    image: "/images/song2.jpg", // Use root-relative paths
+    src: "./Music/song2.mp3", // Use relative path for music
+    image: "./Images/song2.jpg", // Use relative path for images
   },
   {
     title: "Song 3 Title",
     artist: "Artist Name 3",
-    src: "/music/song3.mp3", // Use root-relative paths
-    image: "/images/song3.jpg", // Use root-relative paths
+    src: "./Music/song3.mp3", // Use relative path for music
+    image: "./Images/song3.jpg", // Use relative path for images
   },
 ];
 
-// Track the current song index
 let currentSongIndex = 0;
+let isPlaying = false;
 
-// Load the first song initially
-loadSong(currentSongIndex);
-
+// Load song info into the player
 function loadSong(index) {
   const song = songs[index];
-  audioPlayer.src = song.src;
-  songTitle.textContent = song.title;
-  songArtist.textContent = song.artist;
-  
-  // Dynamically update song image
-  const songImage = document.getElementById("song-image");
-  songImage.src = song.image; // Assuming the song object has an image property
-  songImage.alt = song.title + " Cover Art"; // Update alt text
+  audioPlayer.src = song.src; // Set the source for the audio
+  songTitle.textContent = song.title; // Set the song title
+  songArtist.textContent = song.artist; // Set the artist name
 }
 
-// Handle Play/Pause button click
-let isPlaying = false;
+// Update the play/pause button icon
+function updatePlayPauseIcon() {
+  if (audioPlayer.paused) {
+    playIcon.classList.remove('fa-pause');
+    playIcon.classList.add('fa-play');
+  } else {
+    playIcon.classList.remove('fa-play');
+    playIcon.classList.add('fa-pause');
+  }
+}
+
+// Toggle play/pause functionality
 playPauseButton.addEventListener("click", () => {
   if (isPlaying) {
-    audioPlayer.pause();
-    playPauseButton.innerHTML = '<i class="fas fa-play"></i>'; // Change icon to play
+    audioPlayer.pause(); // Pause the audio
   } else {
-    audioPlayer.play();
-    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>'; // Change icon to pause
+    audioPlayer.play(); // Play the audio
   }
-  isPlaying = !isPlaying;
+  isPlaying = !isPlaying; // Toggle the state
+  updatePlayPauseIcon(); // Update the play/pause button icon
 });
 
-// Update progress bar and current time as the song plays
+// Update progress bar and current time display
 audioPlayer.addEventListener("timeupdate", () => {
-  const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  progressBar.value = progress;
+  const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100; // Calculate the progress percentage
+  progressBar.value = progressPercent; // Update the progress bar
 
-  // Update current time (minutes and seconds)
-  const mins = Math.floor(audioPlayer.currentTime / 60);
-  const secs = Math.floor(audioPlayer.currentTime % 60);
-  currentTime.textContent = `${mins}:${secs < 10 ? "0" + secs : secs}`;
+  const minutes = Math.floor(audioPlayer.currentTime / 60); // Get the minutes
+  const seconds = Math.floor(audioPlayer.currentTime % 60); // Get the seconds
+  currentTimeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`; // Update the current time display
 });
 
-// Handle Next button click (move to next song)
+// Seek the audio when the progress bar is clicked
+progressBar.addEventListener("click", (e) => {
+  const width = progressBar.offsetWidth; // Get the width of the progress bar
+  const clickX = e.offsetX; // Get the X position of the click
+  const duration = audioPlayer.duration; // Get the duration of the audio
+  audioPlayer.currentTime = (clickX / width) * duration; // Set the current time based on the click position
+});
+
+// Next button functionality
 nextButton.addEventListener("click", () => {
-  currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop to the first song
-  loadSong(currentSongIndex);
-  audioPlayer.play();
-  playPauseButton.innerHTML = '<i class="fas fa-pause"></i>'; // Update to pause icon
-  isPlaying = true;
+  currentSongIndex = (currentSongIndex + 1) % songs.length; // Go to the next song (loop back to the first song)
+  loadSong(currentSongIndex); // Load the new song
+  audioPlayer.play(); // Play the new song
+  updatePlayPauseIcon(); // Update the play/pause button icon
+  isPlaying = true; // Set the player to playing state
 });
 
-// Handle Previous button click (move to previous song)
+// Previous button functionality
 prevButton.addEventListener("click", () => {
-  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Loop to the last song
-  loadSong(currentSongIndex);
-  audioPlayer.play();
-  playPauseButton.innerHTML = '<i class="fas fa-pause"></i>'; // Update to pause icon
-  isPlaying = true;
+  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Go to the previous song (loop back to the last song)
+  loadSong(currentSongIndex); // Load the new song
+  audioPlayer.play(); // Play the new song
+  updatePlayPauseIcon(); // Update the play/pause button icon
+  isPlaying = true; // Set the player to playing state
 });
+
+// Initialize player with the first song
+loadSong(currentSongIndex);

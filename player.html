@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spotifire Player</title>
-  <link rel="stylesheet" href="/style.css"> <!-- Use root-relative path -->
+  <link rel="stylesheet" href="style.css"> <!-- Use relative path -->
 </head>
 <body>
   <header>
@@ -13,8 +13,8 @@
 
   <section class="player">
     <div class="song-info">
-      <!-- Use root-relative path for image -->
-      <img id="track-image" class="track-image" src="/images/song1.jpg" alt="Song 1">
+      <!-- Use relative path for image -->
+      <img id="track-image" class="track-image" src="images/song1.jpg" alt="Song 1">
       <div>
         <p id="song-title">Song Title</p>
         <p id="song-artist">Artist Name</p>
@@ -32,14 +32,14 @@
       <span id="current-time">0:00</span> / <span id="duration-time">0:00</span>
     </div>
 
-    <!-- Use root-relative path for audio -->
-    <audio id="audio-player" src="/music/song1.mp3"></audio>
+    <!-- Use relative path for audio -->
+    <audio id="audio-player" src="music/song1.mp3"></audio>
   </section>
 
   <footer>
     <p>&copy; 2024 Spotifire. All Rights Reserved.</p>
   </footer>
 
-  <script src="/app.js"></script> <!-- Use root-relative path for JS -->
+  <script src="app.js"></script> <!-- Use relative path for JS -->
 </body>
 </html>

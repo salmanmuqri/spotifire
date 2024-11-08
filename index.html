@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spotifire</title>
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <!-- Updated CSS path, assuming it's in the root folder (same level as index.html) -->
-  <link rel="stylesheet" href="/style.css">
+  <!-- Corrected CSS path -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Header: Logo and Navigation -->
   <header>
     <div class="logo">Spotifire</div>
     <nav>
-      <!-- Update the login and signup links -->
-      <a href="/login.html">Log In</a>
-      <a href="/signup.html">Sign Up</a>
+      <a href="login.html">Log In</a>
+      <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
@@ -24,27 +24,25 @@
     <div class="hero-content">
       <h1>Listen to Music Anytime, Anywhere</h1>
       <p>Explore millions of songs and podcasts.</p>
-      <button onclick="window.location.href='/signup.html'">Get Started</button>
+      <button onclick="window.location.href='signup.html'">Get Started</button>
     </div>
-    <!-- Make sure the images path is relative to the root directory -->
-    <img src="/images/Halal.jpg" alt="Spotifire Hero" class="hero-img">
+    <img src="images/Halal.jpg" alt="Spotifire Hero" class="hero-img">
   </section>
 
   <!-- Featured Playlists Section -->
   <section class="playlists">
     <h2>Featured Playlists</h2>
     <div class="playlist-grid">
-      <!-- Correct image paths for GitHub Pages -->
       <div class="playlist-item">
-        <img src="/images/Halal.jpg" alt="Playlist 1">
+        <img src="images/Halal.jpg" alt="Rock Classics">
         <p>Rock Classics</p>
       </div>
       <div class="playlist-item">
-        <img src="/images/Halal.jpg" alt="Playlist 2">
+        <img src="images/Halal.jpg" alt="Chill Vibes">
         <p>Chill Vibes</p>
       </div>
       <div class="playlist-item">
-        <img src="/images/Halal.jpg" alt="Playlist 3">
+        <img src="images/Halal.jpg" alt="Top Hits">
         <p>Top Hits</p>
       </div>
     </div>
@@ -54,13 +52,13 @@
   <div class="mini-player">
     <div class="mini-player-controls">
       <button id="prev-btn">
-        <i class="fas fa-step-backward"></i> <!-- Previous Button -->
+        <i class="fas fa-step-backward"></i>
       </button>
       <button id="play-pause-btn">
-        <i class="fas fa-play"></i> <!-- Play Button -->
+        <i class="fas fa-play"></i> <!-- Play Icon -->
       </button>
       <button id="next-btn">
-        <i class="fas fa-step-forward"></i> <!-- Next Button -->
+        <i class="fas fa-step-forward"></i>
       </button>
     </div>
     <div class="song-info">
@@ -68,17 +66,23 @@
       <p id="song-artist">Artist Name</p>
     </div>
     <div class="progress-container">
-      <input type="range" id="progress-bar" value="0" max="100">
+      <input type="range" id="progress-bar" value="0" max="100" step="1">
       <span id="current-time">0:00</span>
     </div>
-    <audio id="audio-player"></audio>
+    <!-- Audio Player -->
+    <audio id="audio-player">
+      <source id="audio-source" src="music/song1.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
   </div>
+  
 
   <!-- Footer Section -->
   <footer>
     <p>&copy; 2024 Spotifire. All Rights Reserved.</p>
   </footer>
 
-  <script src="/app.js"></script> <!-- Path to app.js should also be root-relative -->
+  <!-- JavaScript for functionality -->
+  <script src="app.js"></script>
 </body>
 </html>
